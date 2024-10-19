@@ -30,29 +30,34 @@ class _ShowpageState extends State<Showpage> {
                     itemCount: value.todolist.length,
                     itemBuilder: (context, index) {
                     return ListTile(
-                      // leading: IconButton(onPressed: () {
-                        
-                      // }, icon: Icon(Icons.edit)),
-                         leading: Text(index.toString()),
+
+                         leading: Text("${index.toString()}"),
                       title: Text(value.todolist[index].toString()),
                    
-                      // trailing: Row(
-                      //   children: [
-                      //     IconButton(onPressed: () {
-                            
-                      //     }, icon: Icon(Icons.edit)),
-
-                      //     IconButton(onPressed: () {
-                            
-                      //     }, icon: Icon(Icons.delete))
-                      //   ],
-                      // ),
-                      
-                      trailing: IconButton(onPressed: () {
-                        // int data=value.todolist[index];
-                        value.delete(index);
-
-                      }, icon: Icon(Icons.delete)),
+                      trailing: Container(
+                        width: 100,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                             IconButton(
+                               style: IconButton.styleFrom(
+                                backgroundColor: Colors.grey.shade200
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, "editpage",arguments: index.toString());
+                            }, icon: Icon(Icons.edit)),
+                            //  Icon(Icons.delete),
+                        
+                            IconButton(
+                              style: IconButton.styleFrom(
+                                backgroundColor: Colors.grey.shade300
+                              ),
+                              onPressed: () {
+                               value.delete(index);
+                            }, icon: Icon(Icons.delete))
+                          ],
+                        ),
+                      ),
                     );
                   },),
                 ),

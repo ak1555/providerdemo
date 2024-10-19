@@ -43,7 +43,14 @@ class _MainFileState extends State<MainFile> {
                       controller: c1,
                       decoration: InputDecoration(border: OutlineInputBorder()),
                     )),
-                    TextButton(onPressed: () {
+                    SizedBox(width: 10,),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        // padding: EdgeInsets.fromLTRB(100, 25, 100, 25),
+                        backgroundColor: Colors.grey.shade300,
+                        shape: BeveledRectangleBorder(  borderRadius: BorderRadius.circular(1))
+                      ),
+                      onPressed: () {
                       var data=c1.text;
                       if(c1.text!=""){
                         value.adddata(data);
@@ -75,7 +82,11 @@ class _MainFileState extends State<MainFile> {
 
       ),
       bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 2.0,
+        // color: Colors.blueGrey,
        padding: EdgeInsets.all(5),
+       clipBehavior: Clip.antiAlias,
         child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -87,7 +98,16 @@ class _MainFileState extends State<MainFile> {
           IconButton(onPressed: () {
             Navigator.pushNamed(context, "showpage");
           }, icon:Icon(Icons.arrow_forward_outlined))
-          ],),),
+          ],),
+        // child: BottomNavigationBar(items: [
+        //   BottomNavigationBarItem(
+        //       icon: Icon(Icons.refresh), label: "Clear"),
+
+        //   BottomNavigationBarItem(
+        //       icon: Icon(Icons.arrow_forward), label:"Go"),
+        // ]),
+          
+          ),
     ),
     );
   }
